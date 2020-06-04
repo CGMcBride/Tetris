@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		[width, width + 1, width + 2, width + 3],
 	];
 
-	const theTetromino = [
+	const theTetrominoes = [
 		lTetromino,
 		zTetromino,
 		tTetromino,
@@ -52,6 +52,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	let currentPosition = 4;
 	let currentRotation = 0;
+	// random selection for tetris block and the first rotation
+	let random = Math.floor(Math.random() * theTetrominoes.length)
+	let current = theTetrominoes[random][currentRotation]
+
+
+	// draw the first rotation in the first tetromino
+	function draw() {
+		current.forEach(index => {
+			squares[currentPosition + index].classList.add('tetromino')
+		})
+	}
+	// draw()
+
+	// undraw the tetris block
+	function undraw() {
+		current.forEach(index => {
+			squares[currentPosition + index].classList.remove('tetromino')
+		})
+	}
+	// undraw()
+
+	// have each tetris block move down every second
+
+	timerId = setInterval(moveDown, 1000)
+
+	// create move down function
+
+
+
+
+
+
+
+
+
+
+
 });
 
-// create a function to use in array
+
