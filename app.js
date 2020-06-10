@@ -82,10 +82,20 @@ document.addEventListener("DOMContentLoaded", () => {
 		undraw()
 		currentPosition += width
 		draw()
+		freeze()
 	}
 
-
-
+	// create a freeze function 
+	function freeze() {
+		if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+			current.forEach(index => squares[currentPosition + index + width].classList.add('taken'))
+			// start a new tetris block to fall
+			random = Math.floor(Math.random() * theTetrominoes.length)
+			current = theTetrominoes[random][currentPosition]
+			currentPosition = 4
+			draw()
+		}
+	}
 
 
 
